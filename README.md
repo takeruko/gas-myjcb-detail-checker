@@ -1,2 +1,28 @@
 # gas-myjcb-detail-checker
-MyJCBからご利用明細のPDF/CSVを取得して、Google Driveに保存するGoogle Apps Scriptです
+MyJCBからご利用明細のPDF/CSVを取得して、Google Driveに保存するGoogle Apps Scriptです。
+Google Driveへの保存後に、指定したメールアドレスへメール通知してくれます。
+
+## Install
+1. Google Driveのスクリプトエディタで新しいプロジェクトを作成
+  * standaloneのプロジェクトで良いです。
+  * やり方がわからない場合は、スプレッドシートを新規に作成し、メニューの[ツール]-[スクリプトエディタ]からプロジェクトを作成してください。
+2. main.gs の中身をコピペして保存
+  * Google Apps ScriptのソースをImportするのは煩雑なので、とりあえず。。。
+3. スクリプトプロパティを設定
+  * スクリプトエディタのメニューの[ファイル]-[プロジェクトのプロパティ]-[スクリプトのプロパティ]を選択
+  * 以下のプロパティを追加
+    * userId
+      * MyJCBのログインIDを指定
+    * password
+      * MyJCBのログイン用パスワードを指定
+    * mailTo
+      * ご利用明細保存通知先メールアドレスを指定(複数アドレス設定時は、カンマ区切りでメールアドレスを連結)
+    * folderName
+      * ご利用明細PDF/CSVの保存先フォルダ名
+4. トリガーの設定
+  * 月次で定期実行できるようにトリガーを設定する
+  * スクリプトエディタのメニューの[リソース]-[現在のプロジェクトのトリガー]を選択し、GetLatestDetailFile を定期的に実行するよう設定する
+  * トリガーの保存時に、各種パーミッションを要求されるので、承認する
+
+## TODO
+* もっとsmartにInstall/Updateできるようにしたい
